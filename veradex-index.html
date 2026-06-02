@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>VERADEX &ndash; Thomas Fiebig</title>
+
+<!-- Link-Vorschau (WhatsApp, iMessage, Telegram, Slack, Social Media) -->
+<!-- Schmales Lockup-Format. WICHTIG: og:image MUSS eine absolute https-URL sein.
+     Beispiel unten geht von GitHub Pages aus – bei Bedarf anpassen. -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VERADEX" />
+<meta property="og:title" content="VERADEX" />
+<meta property="og:description" content="Werte · Struktur · Verantwortung" />
+<meta property="og:url" content="https://thomasfiebig.github.io/veradex_visitenkarte/" />
+<meta property="og:image" content="https://thomasfiebig.github.io/veradex_visitenkarte/veradex-preview.png" />
+<meta property="og:image:secure_url" content="https://thomasfiebig.github.io/veradex_visitenkarte/veradex-preview.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1600" />
+<meta property="og:image:height" content="400" />
+<meta property="og:image:alt" content="VERADEX" />
+<meta property="og:locale" content="de_DE" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="VERADEX" />
+<meta name="twitter:description" content="Werte · Struktur · Verantwortung" />
+<meta name="twitter:image" content="https://thomasfiebig.github.io/veradex_visitenkarte/veradex-preview.png" />
+
+<meta name="theme-color" content="#0f0f0f" />
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body {
+  width:100%; min-height:100%;
+  background:transparent;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  touch-action:manipulation;
+  padding:20px;
+}
+.scene {
+  position:relative;
+  width:92vw; max-width:560px;
+  aspect-ratio:1004 / 650;
+}
+.face {
+  position:absolute; inset:0;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
+  transition:opacity 0.25s ease, transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.face svg { display:block; width:100%; height:100%; }
+.front { opacity:1; transform:scale(1); z-index:2; }
+.back  { opacity:0; transform:scale(0.93); z-index:1; pointer-events:none; }
+.scene.flipped .front { opacity:0; transform:scale(0.93); z-index:1; pointer-events:none; }
+.scene.flipped .back  { opacity:1; transform:scale(1); z-index:2; pointer-events:auto; }
+
+/* antippbare Flächen über dem SVG-Text (Koordinaten in % des 1004×650-Viewports) */
+.hotspot {
+  position:absolute;
+  display:block;
+  background:transparent;
+  cursor:pointer;
+  -webkit-touch-callout:none;
+  user-select:none;
+}
+
+/* Flip-Hinweis */
+.flip-tag {
+  position:absolute;
+  bottom:14px; right:18px;
+  font-size:clamp(9px,1.7vw,12px);
+  font-weight:400;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  user-select:none;
+  display:flex; align-items:center; gap:6px;
+  z-index:5;
+}
+.flip-tag svg { width:13px; height:13px; }
+.front .flip-tag { color:rgba(247,245,242,0.55); }
+.front .flip-tag svg path { fill:rgba(247,245,242,0.55); }
+.back  .flip-tag { color:rgba(15,15,15,0.45); }
+.back  .flip-tag svg path { fill:rgba(15,15,15,0.45); }
+</style>
+</head>
+<body>
+<div class="scene" id="scene">
+
+  <!-- ============ VORDERSEITE ============ -->
+  <div class="face front" onclick="flipCard(event)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1004 650">
+      <rect width="1004" height="650" fill="#0f0f0f"/>
+      <g transform="translate(103, 92)">
+        <rect x="0" y="0"     width="130"   height="7.92" fill="#f7f5f2"/>
+        <rect x="0" y="57.96" width="91"    height="7.92" fill="#f7f5f2"/>
+        <rect x="0" y="115.9" width="58.5"  height="7.92" fill="#8a9ba8"/>
+      </g>
+      <text x="298" y="172"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="103" font-weight="300" letter-spacing="13.14"
+            fill="#f7f5f2">VERADEX</text>
+      <text x="298" y="216"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="17.7" font-weight="400" letter-spacing="5.84"
+            fill="#8a9ba8">WERTE · STRUKTUR · VERANTWORTUNG</text>
+      <text font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="51.7" font-weight="200" letter-spacing="2.58"
+            fill="#f7f5f2">
+        <tspan x="103" y="494">Struktur,</tspan>
+        <tspan x="103" y="557">die arbeitet.</tspan>
+      </text>
+    </svg>
+    <div class="flip-tag">
+      <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0 0 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 0 0 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+      Karte drehen
+    </div>
+  </div>
+
+  <!-- ============ RÜCKSEITE ============ -->
+  <div class="face back">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1004 650">
+      <rect width="1004" height="650" fill="#f7f5f2"/>
+      <text x="103" y="180"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="51.7" font-weight="400" letter-spacing="1.03"
+            fill="#0f0f0f">Thomas Fiebig</text>
+      <text x="103" y="220"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="29.5" font-weight="400" letter-spacing="10.34"
+            fill="#8a9ba8">INHABER</text>
+      <line x1="103" y1="252" x2="856" y2="252"
+            stroke="#e8e6e3" stroke-width="1"/>
+      <text x="103" y="319"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="31" fill="#9a9790">+49 151 50225230</text>
+      <text x="103" y="375"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="31" fill="#8a9ba8">info@veradex.de</text>
+      <text x="103" y="431"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="31" fill="#8a9ba8">veradex.de</text>
+      <line x1="525" y1="287" x2="525" y2="450"
+            stroke="#e8e6e3" stroke-width="1"/>
+      <text x="558" y="319"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="31" fill="#9a9790">Bürgermeister-Benz-Str. 13</text>
+      <text x="558" y="375"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="31" fill="#9a9790">77787 Nordrach</text>
+      <text x="103" y="608"
+            font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+            font-size="17.7" font-weight="400" letter-spacing="7.97"
+            fill="#d4cfc8">VERADEX</text>
+    </svg>
+
+    <!-- Antippbare Flächen: sofortige Reaktion via touchstart/click -->
+    <div class="hotspot" data-href="tel:+4915150225230"
+         style="left:9.2%; top:43%; width:34%; height:11%;" role="button" aria-label="Anrufen"></div>
+    <div class="hotspot" data-href="mailto:info@veradex.de"
+         style="left:9.2%; top:51.7%; width:34%; height:11%;" role="button" aria-label="E-Mail senden"></div>
+    <div class="hotspot" data-href="https://veradex.de" data-external="1"
+         style="left:9.2%; top:60.3%; width:34%; height:11%;" role="button" aria-label="Website öffnen"></div>
+
+    <div class="flip-tag" onclick="flipCard(event)">
+      <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0 0 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 0 0 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+      Zurück drehen
+    </div>
+  </div>
+
+</div>
+
+<script>
+function flipCard(e){
+  if(e) e.stopPropagation();
+  document.getElementById("scene").classList.toggle("flipped");
+}
+
+// Hotspots: sofort auslösen bei Tap, auch ohne langes Drücken
+(function(){
+  function trigger(el, e){
+    if(e){ e.preventDefault(); e.stopPropagation(); }
+    var href = el.getAttribute("data-href");
+    if(!href) return;
+    if(el.getAttribute("data-external") === "1"){
+      window.open(href, "_blank", "noopener");
+    } else {
+      // tel: / mailto: → direkt navigieren
+      window.location.href = href;
+    }
+  }
+  document.querySelectorAll(".hotspot").forEach(function(el){
+    var fired = false;
+    el.addEventListener("touchend", function(e){
+      fired = true;
+      trigger(el, e);
+      setTimeout(function(){ fired = false; }, 500);
+    }, {passive:false});
+    el.addEventListener("click", function(e){
+      if(fired) return; // doppelte Auslösung vermeiden
+      trigger(el, e);
+    });
+  });
+})();
+</script>
+</body>
+</html>
